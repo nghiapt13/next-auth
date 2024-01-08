@@ -11,7 +11,6 @@ const domain = process.env.NEXT_PUBLIC_APP_URL;
 export const sendPasswordResetemail = async (
     email: string,
     token: string,
-    name: string,
 ) => {
 
     const resetLink = `${domain}/auth/new-password?token=${token}`
