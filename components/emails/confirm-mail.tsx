@@ -34,8 +34,6 @@ const baseUrl = process.env.VERCEL_URL
     : "";
 
 export const ConfirmMail = ({
-    username = "nghiapt",
-    invitedByUsername = "bukinoshita",
     inviteLink = "",
     inviteFromIp = "204.13.186.218",
     inviteFromLocation = "São Paulo, Brazil",
@@ -62,7 +60,7 @@ export const ConfirmMail = ({
                             <strong>NextAuth - Confirm your email</strong>
                         </Heading>
                         <Text className="text-black text-[14px] leading-[24px]">
-                            Hello {username},
+                            Hello ,
                         </Text>
                         <Text className="text-black text-[14px] leading-[24px]">
                             This email is sent to you to confirm you registation of NextAuth
@@ -82,9 +80,7 @@ export const ConfirmMail = ({
                             </Link>
                         </Text>
                         <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
-                        <Text className="text-[#666666] text-[12px] leading-[24px]">
-                            This invitation was intended for{" "}
-                            <span className="text-black">{username} </span>.This invite was
+                        <Text className="text-[#666666] text-[12px] leading-[24px]">This invite was
                             sent from <span className="text-black">{inviteFromIp}</span>{" "}
                             located in{" "}
                             <span className="text-black">{inviteFromLocation}</span>. If you

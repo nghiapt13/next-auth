@@ -33,7 +33,7 @@ export const sendVerificationEmail = async (
         from: "Trung Nghia from NextAuth <confirm@nghiapt.tech>",
         to: email,
         subject: "NextAuth by NghiaPT | Confirm your email",
-        react: ConfirmMail({ username: "nghiapt", inviteLink: confirmLink })
+        react: ConfirmMail({  inviteLink: confirmLink })
         // html: `<p>Click <a href="${confirmLink}">here</a> to confirm email.</p>`
     });
 }
