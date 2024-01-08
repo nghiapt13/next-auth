@@ -1,10 +1,9 @@
 import { Resend } from "resend";
 import ConfirmMail from "@/components/emails/confirm-mail";
 import TwoFactorEmail from "@/components/emails/two-factor-email";
-import { db } from "./db";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const domain = process.env.NEXT_PUBLIC_APP_URL;
+const domain = process.env.APP_URL;
 
 
 
