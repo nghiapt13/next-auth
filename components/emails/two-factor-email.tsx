@@ -42,7 +42,7 @@ export const TwoFactorEmail = ({
                 /> */}
                     <Heading style={heading}>Your login code for NextAuth</Heading>
                     <Section style={buttonContainer}>
-                        <Button pY={11} pX={23} className="bg-[#000000] rounded text-white text-[12px] font-semibold no-underline text-center py-3 px-5" href="">
+                        <Button className="bg-[#000000] rounded text-white text-[12px] font-semibold no-underline text-center py-11 px-23" href="">
                             Login to NextAuth
                         </Button>
                     </Section>
