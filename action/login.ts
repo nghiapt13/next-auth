@@ -13,7 +13,8 @@ import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation
 
 
 
-export const login = async (values: z.infer<typeof LoginSchema>) => {
+export const login = async (values: z.infer<typeof LoginSchema>,
+    callbackUrl?: string | null,) => {
     const validatedField = LoginSchema.safeParse(values);
 
     if (!validatedField.success) {
@@ -28,14 +29,17 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     }
 
     if (!existingUser.emailVerified) {
-        const verficiationToken = await generateVerificationToken(existingUser.email);
-        await sendVerificationEmail(
-            verficiationToken.email,
-            verficiationToken.token
-        )
-        return { success: "Confirmation email sent!" }
-    };
+        const verificationToken = await generateVerificationToken(
+            existingUser.email,
+        );
 
+        await sendVerificationEmail(
+            verificationToken.email,
+            verificationToken.token,
+        );
+
+        return { success: "Confirmation email sent!" };
+    }
     if (existingUser.isTwoFactorEnabled && existingUser.email) {
         if (code) {
             const twoFactorToken = await getTwoFactorTokenByEmail(
@@ -73,15 +77,15 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
                 twoFactorToken.email,
                 twoFactorToken.token,
             );
+            return { twoFactor: true };
         }
-        return { twoFactor: true };
     }
 
     try {
         await signIn("credentials", {
             email,
             password,
-            redirectTo: DEFAULT_LOGIN_REDIRECT,
+            redirectTo: callbackUrl || DEFAULT_LOGIN_REDIRECT,
         })
     } catch (error) {
         if (error instanceof AuthError) {

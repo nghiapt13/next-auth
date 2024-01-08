@@ -140,7 +140,7 @@ const SettingsPage = () => {
                                         </FormControl>
                                         <SelectContent>
                                             <SelectItem value={UserRole.ADMIN}>
-                                                Führer
+                                                Admin
                                             </SelectItem>
                                             <SelectItem value={UserRole.USER}>
                                                 User

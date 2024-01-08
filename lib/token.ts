@@ -62,12 +62,12 @@ export const generateVerificationToken = async (email: string) => {
             },
         });
     }
-    const verficiationToken = await db.verificationToken.create({
+    const verificationToken = await db.verificationToken.create({
         data: {
             email,
             token,
             expires
         }
     });
-    return verficiationToken;
+    return verificationToken;
 }
